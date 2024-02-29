@@ -1,5 +1,6 @@
 package com.fist.weather.di
 
+import com.fist.weather.network.WeatherBitService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,11 +16,21 @@ object WeatherBitModule {
 
     @Singleton
     @Provides
-    fun providesRetrofit (): Retrofit {
+    fun providesWeatherBitRetrofit (): Retrofit {
         return Retrofit
             .Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
             .build()
+    }
+
+    @Singleton
+    @Provides
+    fun providesWeatherBitService (retrofit: Retrofit): WeatherBitService {
+        val retrofitService: WeatherBitService by lazy {
+            retrofit.create(WeatherBitService::class.java)
+        }
+
+        return retrofitService
     }
 }
