@@ -35,7 +35,7 @@ fun SplashScreen (
             opacity.animateTo(
                 targetValue = 1f,
                 animationSpec = tween(
-                    durationMillis = 10000,
+                    durationMillis = 1000,
                     easing = {
                        OvershootInterpolator(8f)
                            .getInterpolation(it)
@@ -59,7 +59,7 @@ fun SplashScreen (
     ) {
         Icon(
             painter = painterResource(R.drawable.weather),
-            contentDescription = "",
+            contentDescription = "Weather icon",
             tint = MaterialTheme.colorScheme.onBackground
         )
         Text(

@@ -15,6 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 // https://api.openweathermap.org/data/2.5/forecast/daily?q=lisbon&appid=ed60fcfbd110ee65c7150605ea8aceea&units=imperial
 // UI Template: https://dribbble.com/shots/16256783-Weather-App-UI
+// Weather Forecast API (Weatherbit): https://www.weatherbit.io/account/dashboard
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
