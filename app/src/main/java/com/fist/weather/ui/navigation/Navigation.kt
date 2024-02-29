@@ -10,6 +10,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.fist.weather.ui.navigation.components.BottomNavigationBar
+import com.fist.weather.ui.screens.favorite.FavoriteScreen
+import com.fist.weather.ui.screens.search.SearchScreen
+import com.fist.weather.ui.screens.setting.SettingScreen
 import com.fist.weather.ui.screens.main.MainScreen
 import com.fist.weather.ui.screens.main.MainViewModel
 
@@ -34,6 +37,17 @@ fun Navigation (
                     MainScreen(
                         mainViewModel = mainViewModel
                     )
+                }
+
+                composable(Paths.FavoriteScreen.name) {
+                    FavoriteScreen()
+                }
+
+                composable(Paths.SettingScreen.name) {
+                    SettingScreen()
+                }
+                composable(Paths.SettingScreen.name) {
+                    SearchScreen()
                 }
             }
         }

@@ -2,16 +2,19 @@ package com.fist.weather.ui.navigation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.MaterialTheme
@@ -20,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.fist.weather.ui.navigation.Paths
@@ -32,7 +36,9 @@ fun BottomNavigationBar (
 ) {
 
     BottomAppBar(
-        modifier = modifier.background(MaterialTheme.colorScheme.background)
+        modifier = modifier.background(MaterialTheme.colorScheme.background),
+        contentPadding = PaddingValues(top = 10.dp),
+        containerColor = MaterialTheme.colorScheme.background,
     ) {
         Row(
             modifier = modifier.fillMaxWidth(),
@@ -47,6 +53,13 @@ fun BottomNavigationBar (
             )
             BottomNavItem(
                 label  = "Search",
+                activeIcon = Icons.Default.Search,
+                inactiveIcon = Icons.Outlined.Search,
+                path = Paths.SettingScreen.name,
+                navController = navController
+            )
+            BottomNavItem(
+                label  = "Favorite",
                 activeIcon = Icons.Default.Favorite,
                 inactiveIcon = Icons.Outlined.FavoriteBorder,
                 path = Paths.FavoriteScreen.name,
