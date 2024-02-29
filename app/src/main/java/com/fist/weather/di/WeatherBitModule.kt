@@ -12,7 +12,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 object WeatherBitModule {
-    val BASE_URL = "http://api.weatherbit.io/v2.0"
+    val BASE_URL = "https://api.weatherbit.io/v2.0/"
 
     @Singleton
     @Provides
@@ -30,7 +30,6 @@ object WeatherBitModule {
         val retrofitService: WeatherBitService by lazy {
             retrofit.create(WeatherBitService::class.java)
         }
-
         return retrofitService
     }
 }

@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import com.fist.weather.ui.navigation.Navigation
 import com.fist.weather.ui.theme.WeatherTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,7 +35,9 @@ fun App() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-            Navigation()
+            val navController = rememberNavController()
+
+            Navigation(navController = navController)
         }
     }
 }

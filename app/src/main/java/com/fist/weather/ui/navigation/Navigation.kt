@@ -1,21 +1,42 @@
 package com.fist.weather.ui.navigation
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.fist.weather.ui.screens.main.Mainscreen
-import com.fist.weather.ui.screens.splash.SplashScreen
+import com.fist.weather.ui.navigation.components.BottomNavigationBar
+import com.fist.weather.ui.screens.main.MainScreen
+import com.fist.weather.ui.screens.main.MainViewModel
 
 @Composable
-fun Navigation () {
-    val navController = rememberNavController()
-    NavHost(
-        navController = navController,
-        startDestination = Paths.MainScreen.name
-    ) {
-        composable(Paths.MainScreen.name) {
-            Mainscreen()
+fun Navigation (
+    modifier: Modifier = Modifier,
+    navController: NavHostController
+) {
+    Scaffold(
+        bottomBar = { BottomNavigationBar(navController = navController) }
+    ) { innerPadding ->
+        Column(
+            modifier = modifier.padding(innerPadding)
+        ) {
+            NavHost(
+                navController = navController,
+                startDestination = Paths.MainScreen.name
+            ) {
+                composable(Paths.MainScreen.name) {
+                    val mainViewModel = hiltViewModel<MainViewModel>()
+
+                    MainScreen(
+                        mainViewModel = mainViewModel
+                    )
+                }
+            }
         }
     }
+
 }

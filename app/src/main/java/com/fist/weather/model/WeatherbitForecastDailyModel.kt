@@ -2,6 +2,12 @@ package com.fist.weather.model
 
 import com.google.gson.annotations.SerializedName
 
+data class Weather (
+    val icon: String,
+    val description: String,
+    val code: Int
+)
+
 data class WeatherbitForecastDailyEntryModel(
     @SerializedName("high_temp")
     val highTemp: Double,
@@ -19,7 +25,8 @@ data class WeatherbitForecastDailyEntryModel(
     @SerializedName("valid_date")
     val validDate: String,
     @SerializedName("wind_spd")
-    val windSpd: String
+    val windSpd: Double,
+    val weather: Weather
 )
 
 data class WeatherbitForecastDailyResponseModel(
