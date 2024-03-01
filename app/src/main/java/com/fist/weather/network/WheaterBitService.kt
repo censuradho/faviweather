@@ -23,6 +23,6 @@ interface WeatherBitService {
         @Query("city") city: String,
         @Query("key") key: String,
         @Query("units") units: String? = null,
-        @Query("days") days: Int? = 6
+        @Query("days") days: Int? = 10
     ): WeatherbitForecastDailyResponseModel
 }
