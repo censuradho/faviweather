@@ -7,8 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.fist.weather.ui.navigation.components.BottomNavigationBar
 import com.fist.weather.ui.screens.favorite.FavoriteScreen
 import com.fist.weather.ui.screens.search.SearchScreen
@@ -29,26 +31,44 @@ fun Navigation (
         ) {
             NavHost(
                 navController = navController,
-                startDestination = Paths.MainScreen.name
+                startDestination = Paths.SearchScreen.name
             ) {
-                composable(Paths.MainScreen.name) {
-                    val mainViewModel = hiltViewModel<MainViewModel>()
+                composable(
+                    "${Paths.MainScreen.name}/{city}",
+                    arguments = listOf(
+                        navArgument(
+                            name = "city"
+                        ) {
+                            type = NavType.StringType
+                        }
+                    )
+                ) { navBackStackEntry ->
+                    val city = navBackStackEntry.arguments?.getString("city") ?: "Porto Alegre"
 
-                    MainScreen(
-                        mainViewModel = mainViewModel
+                    city?.let {
+                        val mainViewModel = hiltViewModel<MainViewModel>()
+
+                        MainScreen(
+                            mainViewModel = mainViewModel,
+                            city = it
+                        )
+                    }
+
+                }
+                composable(Paths.SearchScreen.name) {
+                    SearchScreen(
+                        onSearch = {
+                            navController.navigate("${Paths.MainScreen.name}/${it}")
+                        }
                     )
                 }
-
                 composable(Paths.FavoriteScreen.name) {
                     FavoriteScreen()
                 }
-
                 composable(Paths.SettingScreen.name) {
                     SettingScreen()
                 }
-                composable(Paths.SettingScreen.name) {
-                    SearchScreen()
-                }
+
             }
         }
     }

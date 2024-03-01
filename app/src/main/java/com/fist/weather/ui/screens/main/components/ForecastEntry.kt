@@ -25,9 +25,12 @@ fun ForecastEntry (
     modifier: Modifier = Modifier,
     entry: WeatherbitForecastDailyEntryModel
 ) {
+    val maxTemp = "${entry.maxTemp}".substringBefore(".")
+    val minTemp = "${entry.minTemp}".substringBefore(".")
+
     Column(
         verticalArrangement = Arrangement.spacedBy(
-            space = 16.dp,
+            space = 4.dp,
             alignment =  Alignment.CenterVertically
         ),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -36,47 +39,28 @@ fun ForecastEntry (
             end = 16.dp
         )
     ) {
-
+        Text(
+            text = LocalDate
+                .parse(entry.validDate)
+                .format(DateTimeFormatter
+                    .ofPattern("EEE")),
+            fontSize = 12.sp,
+            color = MaterialTheme.typography.displaySmall.color,
+            fontWeight = FontWeight.Bold
+        )
         AsyncImage(
             model = "https://cdn.weatherbit.io/static/img/icons/${entry.weather.icon}.png",
             contentDescription = entry.weather.description,
             modifier = modifier
-                .width(50.dp)
-                .height(50.dp),
+                .width(40.dp)
+                .height(40.dp),
             contentScale = ContentScale.Fit
         )
-        Column(
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = LocalDate
-                    .parse(entry.validDate)
-                    .format(DateTimeFormatter
-                        .ofPattern("EEE")),
-                fontSize = 12.sp,
-                color = MaterialTheme.typography.displaySmall.color,
-                fontWeight = FontWeight.Bold
-            )
-            Row (
-                horizontalArrangement = Arrangement.spacedBy(
-                    space = 8.dp,
-                    alignment =  Alignment.CenterHorizontally
-                ),
-            ) {
-
-                Text(
-                    text = "${entry.minTemp}°",
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 14.sp
-                )
-                Text(
-                    text = "${entry.maxTemp}°",
-                    fontWeight = FontWeight.Normal,
-                    fontSize = 14.sp
-                )
-            }
-        }
+        Text(
+            text = "${maxTemp}°/${minTemp}°",
+            fontWeight = FontWeight.Normal,
+            fontSize = 12.sp
+        )
 
     }
 }

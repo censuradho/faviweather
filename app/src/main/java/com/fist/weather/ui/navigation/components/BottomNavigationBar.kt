@@ -6,26 +6,20 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.currentBackStackEntryAsState
 import com.fist.weather.ui.navigation.Paths
 
 
@@ -48,14 +42,14 @@ fun BottomNavigationBar (
                 label  = "Home",
                 activeIcon = Icons.Default.Home,
                 inactiveIcon = Icons.Outlined.Home,
-                path = Paths.MainScreen.name,
+                path = "${Paths.MainScreen.name}/Porto Alegre",
                 navController = navController
             )
             BottomNavItem(
                 label  = "Search",
                 activeIcon = Icons.Default.Search,
                 inactiveIcon = Icons.Outlined.Search,
-                path = Paths.SettingScreen.name,
+                path = Paths.SearchScreen.name,
                 navController = navController
             )
             BottomNavItem(
@@ -67,7 +61,7 @@ fun BottomNavigationBar (
 
             )
             BottomNavItem(
-                label  = "Home",
+                label  = "Settings",
                 activeIcon = Icons.Default.Settings,
                 inactiveIcon = Icons.Outlined.Settings,
                 path = Paths.SettingScreen.name,

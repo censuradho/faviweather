@@ -5,5 +5,6 @@ enum class Paths {
     MainScreen,
     AboutScreen,
     FavoriteScreen,
+    SearchScreen,
     SettingScreen
 }

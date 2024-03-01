@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.io.IOException
-import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,9 +24,14 @@ class MainViewModel @Inject constructor(
     private fun getMock () {
         _uiState.update { it.copy(forecast = WeatherForecastDailyMock) }
     }
-    private fun findWeatherForecastDaily (city: String) {
+    fun findWeatherForecastDaily (city: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _uiState.update { it.copy(loading = true) }
+            _uiState.update {
+                it.copy(
+                    loading = true,
+                    forecast = null
+                )
+            }
 
             try {
                 val response = weatherBitRepository.findForecastDaily(city)
@@ -40,11 +44,7 @@ class MainViewModel @Inject constructor(
             } finally {
                 _uiState.update { it.copy(loading = false) }
             }
+            return@launch
         }
-    }
-
-    init {
-//        findWeatherForecastDaily("Porto Alegre")
-        getMock()
     }
 }
