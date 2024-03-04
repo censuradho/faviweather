@@ -1,5 +1,6 @@
 package com.fist.weather.ui.navigation.components
 
+import android.util.Log
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
@@ -16,11 +17,17 @@ fun BottomNavItem (
     inactiveIcon: ImageVector,
     activeIcon: ImageVector,
     path: String,
-    navController: NavHostController
+    navController: NavHostController,
+    exact: Boolean = false
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-    val isActive = currentRoute == path
+    val baseCurrentRoute = currentRoute?.substringBefore("/")
+    val basePath = path.substringBefore("/")
+
+    val isActive =
+        if (exact) currentRoute == path
+        else baseCurrentRoute == basePath
 
     IconButton(
         onClick = {

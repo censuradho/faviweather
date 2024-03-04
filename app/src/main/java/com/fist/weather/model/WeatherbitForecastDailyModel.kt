@@ -34,8 +34,8 @@ data class WeatherbitForecastDailyResponseModel(
     val cityName: String,
     @SerializedName("country_code")
     val countryCode: String,
-    val lat: String,
-    val lon: String,
+    val lat: Double,
+    val lon: Double,
     val timezone: String,
     val data: List<WeatherbitForecastDailyEntryModel>
 )

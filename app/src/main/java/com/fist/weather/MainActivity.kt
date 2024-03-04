@@ -37,6 +37,7 @@ fun App() {
         ) {
             val navController = rememberNavController()
 
+//            val settingViewModel = hiltViewModel<Settin>()
             Navigation(navController = navController)
         }
     }

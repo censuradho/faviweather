@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.produceState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.fist.weather.ui.screens.main.components.ForecastEntry
@@ -33,8 +32,9 @@ fun MainScreen (
         loading = uiState.loading
     )
 
-    uiState.forecast?.let {
-        val forecast = uiState.forecast!!
+    val forecast = uiState.forecast
+
+    if (forecast !== null) {
 
         Column(
             modifier = modifier
@@ -42,7 +42,14 @@ fun MainScreen (
         ) {
             Header(
                 city = city,
-                country = forecast.countryCode
+                country = forecast.countryCode,
+                isFavorite = uiState.isFavorite,
+                onLike = {
+                    mainViewModel.handleLike(forecast)
+                },
+                onUnlike = {
+                    mainViewModel.handleUnlike(forecast)
+                }
             )
             Temperature(
                 forecast = forecast

@@ -26,4 +26,10 @@ object DatabaseModule {
             .fallbackToDestructiveMigration()
             .build()
     }
+
+    @Provides
+    fun providesFavoriteDao (db: AppDatabase) = db.favoriteDao()
+
+    @Provides
+    fun providesSettingDao (db: AppDatabase) = db.settingDao()
 }

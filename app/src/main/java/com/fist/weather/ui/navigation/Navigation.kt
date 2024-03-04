@@ -13,10 +13,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.fist.weather.ui.navigation.components.BottomNavigationBar
 import com.fist.weather.ui.screens.favorite.FavoriteScreen
-import com.fist.weather.ui.screens.search.SearchScreen
-import com.fist.weather.ui.screens.setting.SettingScreen
+import com.fist.weather.ui.screens.favorite.FavoriteViewModel
 import com.fist.weather.ui.screens.main.MainScreen
 import com.fist.weather.ui.screens.main.MainViewModel
+import com.fist.weather.ui.screens.search.SearchScreen
+import com.fist.weather.ui.screens.setting.SettingScreen
 
 @Composable
 fun Navigation (
@@ -31,7 +32,7 @@ fun Navigation (
         ) {
             NavHost(
                 navController = navController,
-                startDestination = Paths.SearchScreen.name
+                startDestination = Paths.SettingScreen.name
             ) {
                 composable(
                     "${Paths.MainScreen.name}/{city}",
@@ -63,7 +64,12 @@ fun Navigation (
                     )
                 }
                 composable(Paths.FavoriteScreen.name) {
-                    FavoriteScreen()
+                    val viewModel = hiltViewModel<FavoriteViewModel>()
+
+                    FavoriteScreen(
+                        favoriteViewModel = viewModel,
+                        navController = navController
+                    )
                 }
                 composable(Paths.SettingScreen.name) {
                     SettingScreen()

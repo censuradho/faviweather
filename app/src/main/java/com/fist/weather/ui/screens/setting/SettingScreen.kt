@@ -37,6 +37,7 @@ fun SettingScreen (
                 Text(
                     text = stringResource(id = R.string.app_version_label),
                 )
+
             }
         }
     }

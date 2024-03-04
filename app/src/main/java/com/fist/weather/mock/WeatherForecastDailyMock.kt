@@ -7,8 +7,8 @@ import com.fist.weather.model.WeatherbitForecastDailyResponseModel
 val WeatherForecastDailyMock = WeatherbitForecastDailyResponseModel(
     cityName = "Porto Alegre",
     countryCode = "BR",
-    lon = "-51.23",
-    lat = "-30.03306",
+    lon = -51.23,
+    lat = -30.03306,
     timezone = "America/Sao_Paulo",
     data = listOf(
         WeatherbitForecastDailyEntryModel(
