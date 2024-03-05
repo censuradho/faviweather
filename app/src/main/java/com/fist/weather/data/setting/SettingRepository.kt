@@ -11,6 +11,12 @@ class SettingRepository @Inject constructor(
 ): ISettingRepository {
     override suspend fun upsert(payload: SettingEntity) = settingDao.upset(payload)
 
-    override fun find(): Flow<SettingEntity> = settingDao.find()
-
+    override fun find(): Flow<SettingEntity?> = settingDao.find()
+    override suspend fun updateUnit(unit: String) {
+        settingDao.upset(
+            data = SettingEntity(
+                unit = unit,
+            )
+        )
+    }
 }

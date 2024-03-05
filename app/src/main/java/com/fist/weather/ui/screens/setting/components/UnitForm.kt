@@ -1,5 +1,6 @@
 package com.fist.weather.ui.screens.setting.components
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -16,10 +17,10 @@ import com.fist.weather.ui.components.RadioButton
 @Composable
 fun UnitForm(
     modifier: Modifier = Modifier,
+    value: String,
     onChange: (value: String) -> Unit
 ) {
     Column (
-
     ) {
         Text(
             text = "Unit",
@@ -39,14 +40,16 @@ fun UnitForm(
                     label = "Fahrenheit",
                     onClick = {
                         onChange(UnitSetting.FAHRENHEIT.name)
-                    }
-                )
+                    },
+                    selected = value == UnitSetting.FAHRENHEIT.name
+                 )
     
                 RadioButton(
                     label = "Celsius",
                     onClick = {
                         onChange(UnitSetting.CELSIUS.name)
-                    }
+                    },
+                    selected = value == UnitSetting.CELSIUS.name
                 )
             }
         }

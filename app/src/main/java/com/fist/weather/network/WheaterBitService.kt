@@ -22,7 +22,7 @@ interface WeatherBitService {
     suspend fun findForecastDaily (
         @Query("city") city: String,
         @Query("key") key: String,
-        @Query("units") units: String? = null,
+        @Query("units") units: Char? = null,
         @Query("days") days: Int? = 10
     ): WeatherbitForecastDailyResponseModel
 }

@@ -18,11 +18,13 @@ import com.fist.weather.ui.screens.main.MainScreen
 import com.fist.weather.ui.screens.main.MainViewModel
 import com.fist.weather.ui.screens.search.SearchScreen
 import com.fist.weather.ui.screens.setting.SettingScreen
+import com.fist.weather.ui.screens.setting.SettingViewModel
 
 @Composable
 fun Navigation (
     modifier: Modifier = Modifier,
-    navController: NavHostController
+    navController: NavHostController,
+    settingViewModel: SettingViewModel
 ) {
     Scaffold(
         bottomBar = { BottomNavigationBar(navController = navController) }
@@ -32,7 +34,7 @@ fun Navigation (
         ) {
             NavHost(
                 navController = navController,
-                startDestination = Paths.SettingScreen.name
+                startDestination = Paths.SearchScreen.name
             ) {
                 composable(
                     "${Paths.MainScreen.name}/{city}",
@@ -71,10 +73,13 @@ fun Navigation (
                         navController = navController
                     )
                 }
-                composable(Paths.SettingScreen.name) {
-                    SettingScreen()
-                }
 
+                composable(Paths.SettingScreen.name) {
+
+                    SettingScreen(
+                        settingViewModel = settingViewModel
+                    )
+                }
             }
         }
     }

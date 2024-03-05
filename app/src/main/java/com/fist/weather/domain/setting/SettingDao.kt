@@ -11,5 +11,8 @@ interface SettingDao {
     suspend fun upset (data: SettingEntity): Unit
 
     @Query("SELECT * FROM settings WHERE id = 1")
-    fun find (): Flow<SettingEntity>
+    fun find (): Flow<SettingEntity?>
+
+    @Query("UPDATE settings SET unit = :unit WHERE id = 1")
+    suspend fun updateUnit (unit: String)
 }

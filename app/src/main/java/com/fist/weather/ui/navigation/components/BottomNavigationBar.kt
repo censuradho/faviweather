@@ -7,11 +7,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.FavoriteBorder
-import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.BottomAppBar
@@ -38,13 +36,6 @@ fun BottomNavigationBar (
             modifier = modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            BottomNavItem(
-                label  = "Home",
-                activeIcon = Icons.Default.Home,
-                inactiveIcon = Icons.Outlined.Home,
-                path = "${Paths.MainScreen.name}/Porto Alegre",
-                navController = navController
-            )
             BottomNavItem(
                 label  = "Search",
                 activeIcon = Icons.Default.Search,

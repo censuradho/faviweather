@@ -9,8 +9,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.fist.weather.ui.navigation.Navigation
+import com.fist.weather.ui.screens.setting.SettingViewModel
 import com.fist.weather.ui.theme.WeatherTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,9 +38,12 @@ fun App() {
             color = MaterialTheme.colorScheme.background
         ) {
             val navController = rememberNavController()
+            val settingViewModel = hiltViewModel<SettingViewModel>()
 
-//            val settingViewModel = hiltViewModel<Settin>()
-            Navigation(navController = navController)
+            Navigation(
+                navController = navController,
+                settingViewModel = settingViewModel
+            )
         }
     }
 }

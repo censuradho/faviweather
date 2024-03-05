@@ -17,7 +17,9 @@ import javax.inject.Singleton
 abstract class RepositoryModule {
     @Binds
     @Singleton
-    abstract fun bindWeatherBitRepository (weatherBitRepository: WeatherBitRepository): IWeatherBitRepository
+    abstract fun bindWeatherBitRepository (
+        weatherBitRepository: WeatherBitRepository
+    ): IWeatherBitRepository
 
     @Binds
     @Singleton
@@ -25,5 +27,5 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindSettingRepository (setingRepository: SettingRepository): ISettingRepository
+    abstract fun bindSettingRepository (settingRepository: SettingRepository): ISettingRepository
 }
