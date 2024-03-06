@@ -30,9 +30,9 @@ A maior parte dos conceitos, eu li via [Training Courses da Google](https://deve
 
 ## 📋 Features
 
-- Forecast API (6 day / daily)
-- Check detailed information about the weather by coordinates (lat, lon)
-- Check detailed information about the weather by city name
-- Bookmark a location
-- Remove a bookmark
+- API de previsão (7 dias)
+- Informações detalhadas spbre o tempo pelas coordenadas (lat, lon)
+- Informações detalhadas spbre o tempo pelo nome da cidade
+- Favorite uma localização
+- Remova localizações favoritadas
 - Data Cache
