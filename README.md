@@ -28,4 +28,11 @@ A maior parte dos conceitos, eu li via [Training Courses da Google](https://deve
 
 ---
 
-## 🚀 Getting Started
+## 📋 Features
+
+- Forecast API (6 day / daily)
+- Check detailed information about the weather by coordinates (lat, lon)
+- Check detailed information about the weather by city name
+- Bookmark a location
+- Remove a bookmark
+- Data Cache
