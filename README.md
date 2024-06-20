@@ -1,6 +1,6 @@
 # Favi Weather
 
-Esse é um projeto que foi construido para eu aprender os conceitos básicos de uma plicação Android, como reaizar requisições via internet com Retrofit, arquitetura MVVM para aplicações ecaláveis, injeção de dependência, Coroutines e mais.
+Esse é um projeto que foi construido para eu aprender os conceitos básicos de uma plicação Android, como reaizar requisições http com Retrofit, arquitetura MVVM, injeção de dependência, Coroutines e mais.
 
 A maior parte dos conceitos, eu li via [Training Courses da Google](https://developer.android.com/courses).
 
